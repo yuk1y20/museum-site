@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みんなの感想</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="comment-page">
+
+    <h1>みんなの感想</h1>
+
+    <p class="comment-sub">
+        この作品をご覧になった方の感想です。<br>
+        あなたも感想を投稿してみましょう。
+    </p>
+
+    <!-- 投稿フォーム -->
+    <div class="comment-form">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="ニックネーム（任意）">
+
+        <select id="star">
+            <option>★★★★★</option>
+            <option>★★★★☆</option>
+            <option>★★★☆☆</option>
+            <option>★★☆☆☆</option>
+            <option>★☆☆☆☆</option>
+        </select>
+
+        <textarea
+            id="comment"
+            placeholder="作品の感想を書いてください"></textarea>
+
+        <button class="submit-btn"
+                onclick="addComment()">
+            投稿する
+        </button>
+
+    </div>
+
+    <hr>
+
+    <!-- 感想一覧 -->
+
+    <div id="comments">
+
+        <div class="review-card">
+
+            <h3>★★★★★</h3>
+
+            <p>
+                夜空の渦や色彩がとても美しく、
+                実物は写真以上の迫力がありました。
+            </p>
+
+            <span>20代・女性</span>
+
+        </div>
+
+        <div class="review-card">
+
+            <h3>★★★★☆</h3>
+
+            <p>
+                解説を読んでから鑑賞すると、
+                ゴッホの思いや作品への理解が深まりました。
+            </p>
+
+            <span>大学生</span>
+
+        </div>
+
+    </div>
+
+    <!-- ボタン -->
+
+    <div class="button-group">
+
+        <button class="back-btn"
+                onclick="location.href='art1.html'">
+            ← 作品紹介へ戻る
+        </button>
+
+        <button class="next-btn"
+                onclick="location.href='art2.html'">
+            次の作品へ →
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function addComment(){
+
+    let name=document.getElementById("name").value;
+
+    let star=document.getElementById("star").value;
+
+    let comment=document.getElementById("comment").value;
+
+    if(comment==""){
+
+        alert("感想を入力してください。");
+
+        return;
+
+    }
+
+    if(name==""){
+
+        name="匿名";
+
+    }
+
+    let html=`
+
+    <div class="review-card">
+
+        <h3>${star}</h3>
+
+        <p>${comment}</p>
+
+        <span>${name}</span>
+
+    </div>
+
+    `;
+
+    document.getElementById("comments").innerHTML=
+    html+
+    document.getElementById("comments").innerHTML;
+
+    document.getElementById("name").value="";
+    document.getElementById("comment").value="";
+
+    alert("投稿ありがとうございました！");
+
+}
+
+</script>
+
+</body>
+
+</html>
